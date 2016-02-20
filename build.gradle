@@ -1,0 +1,28 @@
+group 'com.chowculator'
+version '1.0.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.5'
+    compile 'io.dropwizard:dropwizard-core:0.9.2'
+    compile 'com.chowculator:cassandra-schema:1.0-SNAPSHOT'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
